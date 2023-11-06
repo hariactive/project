@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PIN Code to City Name Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+            margin: 20px;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            margin: 10px;
+            border: 2px solid #333;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        p {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .success-message {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PIN Code to City Name Converter</h1>
+    </header>
+
+    <form method="POST" action="/" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".txt" required>
+        <input type="submit" value="Upload and Process">
+    </form>
+
+    {% if request.method == "POST" %}
+        {% if random_filename %}
+            <p class="success-message">Success! Results saved to <a href="{{ url_for('static', filename=random_filename) }}">{{ random_filename }}</a></p>
+        {% endif %}
+    {% endif %}
+
+    <footer>
+        &copy; 2023 Hari Narayan Shukla
+    </footer>
+</body>
+</html>
